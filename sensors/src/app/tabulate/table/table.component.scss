@@ -1,0 +1,14 @@
+.table-container {
+    width: calc(100% - 20px);
+    height: calc(100% - 85px);
+    margin: 10px auto;
+    overflow: scroll;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    width: 200px;
+}

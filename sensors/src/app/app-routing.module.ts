@@ -9,12 +9,16 @@ const routes: Routes = [
       import("./home/home.module").then((m) => m.HomeModule),
   },
   {
+    path: "create",
+    loadChildren: () =>
+      import("./create/create.module").then((m) => m.CreateModule),
+  },
+  {
     path: "**",
     redirectTo: "home",
     pathMatch: "full",
   },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
