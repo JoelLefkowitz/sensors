@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { SensorData, SensorDataType, sensorDataTypes } from "src/api/sensor-data.model";
 
 import { Router } from "@angular/router";
+import { SensorDataPayload } from "../../../api/payloads";
 import { SensorsService } from "src/app/helpers/sensors.service";
 import { requiredNumeric } from "src/api/validators";
 
@@ -35,7 +36,7 @@ export class StepperComponent implements OnInit {
         
         Object.assign(outputData, {
             box_id: formInput.box_id,
-            id: formInput.box_id.concat("-", formInput.sensorDataType.sensor_type),
+            xid: formInput.box_id.concat("-", formInput.sensorDataType.sensor_type),
             longitude: formInput.coordinates.longitude,
             latitude: formInput.coordinates.latitude,
             reading: formInput.reading,
@@ -44,7 +45,7 @@ export class StepperComponent implements OnInit {
       )   
       
       this.sensorsService.create(outputData).subscribe(
-          (sensorData: SensorData) => this.router.navigateByUrl("/")
+          (sensorData: SensorDataPayload) => this.router.navigateByUrl("/")
       );
     }
 }

@@ -1,21 +1,22 @@
+import { ComponentFactoryResolver, Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable, combineLatest, of } from "rxjs";
 import {
     Paginated,
     PaginatorConfig,
     defaultPaginatorConfig,
 } from "src/api/paginator.model";
+import {SensorDataPayload, paginatedXidToId} from "src/api/payloads";
 import {
     catchError,
     debounceTime,
+    map,
     switchMap,
+    tap
 } from "rxjs/operators";
 
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
 import { RestService } from "./rest.service";
-import {
-    SensorData,
-} from "src/api/sensor-data.model";
+import {SensorData} from "src/api/sensor-data.model";
 import { environment } from "src/environments/environment";
 import {
     mockSensorData,
@@ -36,22 +37,35 @@ export class SensorsService {
         limit?: number,
         offset?: number
     ): Observable<Paginated<SensorData>> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type':  'application/json',
+            }),
+            params: new HttpParams()
+            .set('sortBy', 'reading_ts')
+            .set('sensor_type', 'O3')
+          };
+        
         return this.http
-            .get<Paginated<SensorData>>(
+            .get<Paginated<SensorDataPayload>>(
                 this.backend.concat(
                     this.restService.paginationBuilder(
                         limit,
                         offset
                     )
                 ),
-                this.restService.defaultHeaders
+                httpOptions
             )
-            .pipe(catchError(this.restService.handleError));
+            .pipe(
+                map(paginatedXidToId),
+                catchError(this.restService.handleError
+            ));
     }
 
-    create(payload: SensorData): Observable<SensorData> {
-        return this.http.post<SensorData>(
+    create(payload: SensorDataPayload): Observable<SensorDataPayload> {
+        return this.http.post<SensorDataPayload>(
             this.backend,
+            payload,
             this.restService.defaultHeaders
         )
         .pipe(catchError(this.restService.handleError));

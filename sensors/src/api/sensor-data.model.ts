@@ -21,11 +21,9 @@ export interface SensorDataType {
 }
 
 export const sensorDataTypes: SensorDataType[] = [
-    {
-        name: "Ozone",
-        sensor_type: "O3",
-        range_l: 0,
-        range_u: 1000,
-        unit: "ppm",
-    }
+    {"sensor_type": "RH", "unit": "%", "name": "Relative humidity", "range_l": 0.0, "range_u": 100.0},
+    {"sensor_type": "O3", "unit": "ppm", "name": "Ozone", "range_l": 0.0, "range_u": 1000.0},
+    {"sensor_type": "NO2", "unit": "ppm", "name": "Nitrogen dioxide", "range_l": 0.0, "range_u": 1000.0},
+    {"sensor_type": "CO", "unit": "ppm", "name": "Carbon monoxide", "range_l": 0.0, "range_u": 1000.0},
+    {"sensor_type": "TEMP", "unit": "\u00baC", "name": "Ambient temperature", "range_l": -20.0, "range_u": 80.0}
 ]
