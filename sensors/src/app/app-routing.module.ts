@@ -18,6 +18,13 @@ const routes: Routes = [
             ),
     },
     {
+        path: "plot",
+        loadChildren: () =>
+            import("./plot/plot.module").then(
+                (m) => m.PlotModule
+            ),
+    },
+    {
         path: "**",
         redirectTo: "home",
         pathMatch: "full",

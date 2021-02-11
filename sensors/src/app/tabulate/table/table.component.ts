@@ -1,5 +1,5 @@
-import { BehaviorSubject, Observable } from "rxjs";
-import { Component, OnInit } from "@angular/core";
+import { BehaviorSubject, Observable, combineLatest } from "rxjs";
+import { Component, Input, OnInit } from "@angular/core";
 import {
     Paginated,
     PaginatorConfig,
@@ -14,6 +14,7 @@ import {
 
 import { SensorData } from "src/api/sensor-data.model";
 import { SensorsService } from "src/app/helpers/sensors.service";
+import { TableConfig } from "../table-config/table-config.component";
 
 @Component({
     selector: "app-table",
@@ -36,19 +37,23 @@ export class TableComponent implements OnInit {
         defaultPaginatorConfig
     );
 
+    @Input() tableConfig: Observable<TableConfig>
+
     constructor(private sensorsService: SensorsService) {}
 
     ngOnInit(): void {
-        this.sensorData = this.paginatorConfig.pipe(
+        this.sensorData = combineLatest([this.paginatorConfig, this.tableConfig])
+        .pipe(
             debounceTime(50),
-            switchMap((paginatorConfig) => {
+            switchMap(
+                ([paginatorConfig, tableConfig]) => {
                 const limit = paginatorConfig
                     ? paginatorConfig.pageSize
                     : null;
                 const offset = paginatorConfig
                     ? limit * paginatorConfig.pageIndex
                     : null;
-                return this.sensorsService.list(limit, offset);
+                return this.sensorsService.list(limit, offset, tableConfig);
             })
         );
     }

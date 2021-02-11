@@ -1,0 +1,17 @@
+<form [formGroup]="tableConfig">
+    <mat-list fxLayout="column" fxLayoutAlign="center start" class="form-conatainer">
+        <mat-form-field class="config-field" appearance="outline">
+            <mat-label>Sort by</mat-label>
+            <mat-select formControlName="sortBy">
+                <mat-option *ngFor="let option of sortOptions" [value]="option.value">{{option.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="config-field" appearance="outline">
+            <mat-label>Filter by</mat-label>
+            <mat-select formControlName="filterBy">
+                <mat-option *ngFor="let option of filterOptions" [value]="option.value">{{option.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-list>
+</form>
+
