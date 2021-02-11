@@ -4,10 +4,10 @@ Tabular display for sensor readings
 
 ## Status
 
-| Source     | Shields                                                        |
-| ---------- | -------------------------------------------------------------- |
-| Project    | ![license][license] ![release][release]                        |
-| Raised     | [![issues][issues]][issues_link] [![pulls][pulls]][pulls_link] |
+| Source  | Shields                                                        |
+| ------- | -------------------------------------------------------------- |
+| Project | ![license][license] ![release][release]                        |
+| Raised  | [![issues][issues]][issues_link] [![pulls][pulls]][pulls_link] |
 
 ## Running
 
@@ -58,7 +58,7 @@ Releases are made on every minor change.
 
 ## Author
 
-- **Joel Lefkowitz** - _Initial work_ - [Joel Lefkowitz][author]
+-   **Joel Lefkowitz** - _Initial work_ - [Joel Lefkowitz][author]
 
 See also the list of contributors who participated in this project.
 
@@ -75,6 +75,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 None yet!
 
 <!-- Status table links -->
+
 [license]: https://img.shields.io/github/license/joellefkowitz/sensors
 [release]: https://img.shields.io/github/v/tag/joellefkowitz/sensors
 [issues]: https://img.shields.io/github/issues/joellefkowitz/sensors "Issues"
@@ -83,6 +84,7 @@ None yet!
 [pulls_link]: https://github.com/JoelLefkowitz/sensors/pulls
 
 <!-- Plugable links -->
+
 [documentation]: https://sensors.readthedocs.io/en/latest/
 [author]: https://github.com/JoelLefkowitz
 [semver]: http://semver.org/

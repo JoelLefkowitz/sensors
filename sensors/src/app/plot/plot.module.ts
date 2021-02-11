@@ -1,11 +1,9 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { SharedModule } from "src/app/shared/shared.module";
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule, SharedModule
-  ]
+    declarations: [],
+    imports: [CommonModule, SharedModule],
 })
-export class PlotModule { }
+export class PlotModule {}

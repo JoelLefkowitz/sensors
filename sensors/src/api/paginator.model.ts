@@ -9,12 +9,12 @@ export type Paginated<T> = {
     count: number;
     next: number;
     previous: number;
-    results: T[]
-}
+    results: T[];
+};
 
 export const defaultPaginatorConfig = {
     length: 0,
     pageIndex: 0,
     pageSize: 10,
     previousPageIndex: 0,
-}
+};

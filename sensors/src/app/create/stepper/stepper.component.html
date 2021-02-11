@@ -1,2 +1,85 @@
-<app-fab icon="home" routerLink="/home"></app-fab>
+<div
+    class="stepper-container"
+    fxLayout="column"
+    fxLayoutAlign="start center"
+>
+    <mat-vertical-stepper #stepper>
+        <form id="sensor-data" [formGroup]="sensorData">
+            <mat-step stepControl="box_id">
+                <ng-template matStepLabel
+                    >Box ID</ng-template
+                >
+                <mat-form-field class="form-field">
+                    <mat-label>Box ID</mat-label>
+                    <input
+                        matInput
+                        formControlName="box_id"
+                        required
+                    />
+                </mat-form-field>
+            </mat-step>
 
+            <mat-step stepControl="sensorDataType">
+                <ng-template matStepLabel
+                    >Sensor data type</ng-template
+                >
+                <mat-form-field class="form-field">
+                    <mat-label>Sensor data type</mat-label>
+                    <mat-select formControlName="sensorDataType">
+                        <mat-option *ngFor="let sensorDataType of sensorDataTypes" [value]="sensorDataType">{{sensorDataType.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-step>
+
+            <mat-step stepControl="coordinates" formGroupName="coordinates">
+                <ng-template matStepLabel
+                    >Coordinates</ng-template
+                >
+                <mat-form-field class="form-field">
+                    <mat-label>Longitude</mat-label>
+                    <input
+                        matInput
+                        formControlName="longitude"
+                        required
+                    />
+                </mat-form-field>
+                <mat-form-field class="form-field">
+                    <mat-label>Latitude</mat-label>
+                    <input
+                        matInput
+                        formControlName="latitude"
+                        required
+                    />
+                </mat-form-field>
+            </mat-step>
+
+            <mat-step stepControl="reading">
+                <ng-template matStepLabel
+                    >Reading</ng-template
+                >
+                <mat-form-field class="form-field">
+                    <mat-label>Reading</mat-label>
+                    <input
+                        matInput
+                        formControlName="reading"
+                        required
+                    />
+                </mat-form-field>
+            </mat-step>
+
+        </form>
+    </mat-vertical-stepper>
+    <button
+        mat-flat-button
+        type="submit"
+        id="sensor-data-submit"
+        (click)="onSubmit()"
+        [disabled]="!sensorData.valid"
+        color="primary"
+        class="wide-button"
+    >
+        Submit
+    </button>
+</div>
+
+<app-fab class="fab" icon="home" routerLink="/home"></app-fab>

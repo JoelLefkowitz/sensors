@@ -4,4 +4,4 @@
 
 ### Added
 
-- Front end table components
+-   Front end table components

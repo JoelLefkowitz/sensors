@@ -1,14 +1,14 @@
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from "@angular/router";
 
-import { NgModule } from '@angular/core';
-import { StepperComponent } from './stepper/stepper.component';
+import { NgModule } from "@angular/core";
+import { StepperComponent } from "./stepper/stepper.component";
 
 const routes: Routes = [
-  {path: "", component: StepperComponent}
+    { path: "", component: StepperComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class CreateRoutingModule { }
+export class CreateRoutingModule {}
