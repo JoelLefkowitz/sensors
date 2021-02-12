@@ -1,0 +1,25 @@
+version: "3.3"
+
+services:
+  bank:
+    image: joellefkowitz/bank:0.1.0
+    env_file: bank.env
+    depends_on:
+      - postgres
+
+  sensors:
+    image: joellefkowitz/sensors:0.1.0
+    ports:
+      - 80:80
+    depends_on:
+      - bank
+
+  postgres:
+    image: postgres:13
+    env_file: postgres.env
+      - bank
+      
+  memcached:
+    image: memcached:1.6
+    env_file: memcached.env
+
