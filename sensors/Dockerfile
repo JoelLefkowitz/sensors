@@ -22,4 +22,4 @@ COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/common /etc/nginx/common
 
 # Copy browser bundles
-COPY --from=build sensors/dist/sensors/ /etc/nginx/html/
+COPY --from=build  sensors/dist/sensors/ /etc/nginx/html/

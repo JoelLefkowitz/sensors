@@ -67,16 +67,17 @@ export class TimeSeriesComponent implements OnInit {
 
     ngOnInit(): void {
         this.chartOptions = this.metric.valueChanges.pipe(
-            switchMap((metric) =>
+          switchMap((metric) =>
                 this.sensorsService.list(50, 0, {
-                    filterBy: 'O3',
+                    filterBy: metric,
                     sortBy: null,
                 })
             ),
+            tap(x => console.log(x)),
             map((paginatedData) => ({
                 series: [
                     {
-                        name: "Desktops",
+                        name: paginatedData.results[0].name,
                         data: paginatedData.results.map(
                             (i) => i.reading
                         ),
@@ -96,7 +97,7 @@ export class TimeSeriesComponent implements OnInit {
                     curve: "straight",
                 },
                 title: {
-                    text: "Product Trends by Month",
+                    text: paginatedData.results[0].name.concat(" /", paginatedData.results[0].unit),
                     align: "left",
                 },
                 grid: {
@@ -107,7 +108,7 @@ export class TimeSeriesComponent implements OnInit {
                 },
                 xaxis: {
                     categories: paginatedData.results.map(
-                        (i) => i.reading_ts
+                        (i) => i.reading_ts.replace("T", " ")
                     ),
                 },
             } as Partial<ChartOptions>))

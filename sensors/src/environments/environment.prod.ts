@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiHost: "http://bank:8000/",
+    apiHost: "http://sensors.joellefkowitz.co.uk/"
 };

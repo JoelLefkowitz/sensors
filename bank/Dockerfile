@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir .
 # Copy source
 COPY . .
 EXPOSE 8000/tcp
-ENTRYPOINT entrypoint.sh
+ENTRYPOINT /bank/entrypoint.sh

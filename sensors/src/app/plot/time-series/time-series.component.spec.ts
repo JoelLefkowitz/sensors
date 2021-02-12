@@ -1,9 +1,10 @@
 import {
-    async,
     ComponentFixture,
     TestBed,
+    async,
 } from "@angular/core/testing";
 
+import { TestingModule } from "../../shared/testing.module";
 import { TimeSeriesComponent } from "./time-series.component";
 
 describe("TimeSeriesComponent", () => {
@@ -12,6 +13,7 @@ describe("TimeSeriesComponent", () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
+            imports: [TestingModule],
             declarations: [TimeSeriesComponent],
         }).compileComponents();
     }));
