@@ -9,35 +9,102 @@ Tabular display for sensor readings
 | Project | ![license][license] ![release][release]                        |
 | Raised  | [![issues][issues]][issues_link] [![pulls][pulls]][pulls_link] |
 
+## Demonstration
+
+Check out our [live demo!][demo]
+
+## Architecture
+
+![Architecture][architecture]
+
+## Decisions
+
+Rather than storing data on the front end we implement a rest API, this is beacause:
+
+* Storing the dataset on the front end prevents the persistance of changes made between sessions.
+
+* A document (NoSQL) database is not easy to append new data to.
+
+* A rest API can support pagination, filtering and sorting to satisfy the requirements.
+
+It is necessary to parse the initial JSON data into a fixture that the backend can load:
+
+```bash
+cd bank/fixtures
+python parse.py --input initial.json --output parsed.json
+```
+
+This can then be loadded:
+
+```bash
+cd bank
+python manage.py loaddata fixtures/parsed.json
+```
+
 ## Running
 
 ### Development
 
-Install dependencies
+Install dependencies:
 
 ```bash
+cd sensors
 npm i
 ```
 
-Run in a browser (port 4200)
+Run locally at port 4200:
 
 ```bash
 npm run dev
 ```
 
-### Production
+Install server dependencies
 
 ```bash
+cd bank
+pip install .
+```
+
+Run a server isntance:
+
+```bash
+export DJANGO_SETTINGS_MODULE="bank.settings.dev"
+python manage.py migrate
+python manage.py loaddata fixtures/parsed.json
+python manage.py runserver
+```
+
+### Production
+
+Build the images:
+
+```bash
+cd sensors
 docker build . -t joellefkowitz/sensors:0.1.0
 ```
+
+```bash
+cd bank
+docker build . -t joellefkowitz/bank:0.1.0
+```
+
+Deploy to a swarm:
 
 ```bash
 docker stack deploy prod -c compose/docker-compose.yml
 ```
 
+## Tests
+
+To run unit tests:
+
+```bash
+ng test
+```
+
 ## Documentation
 
-Additional details are available in the [documentation][documentation]
+Additional details are available in the[documentation][documentation]
 
 ## Changelog
 
@@ -88,3 +155,5 @@ None yet!
 [documentation]: https://sensors.readthedocs.io/en/latest/
 [author]: https://github.com/JoelLefkowitz
 [semver]: http://semver.org/
+[demo]: http://sensors.joellefkowitz.co.uk/home
+[architecture]: https://github.com/JoelLefkowitz/sensors/raw/master/architecture.png "Architecture"
