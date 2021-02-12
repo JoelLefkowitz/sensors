@@ -11,17 +11,20 @@ import { TableConfig } from "../../tabulate/table-config/table-config.component"
 export class DashboardComponent implements OnInit {
     constructor() {}
 
-    tableConfig: Observable<TableConfig>
+    tableConfig: Observable<TableConfig>;
 
-    private tableConfigSource = new BehaviorSubject<TableConfig>({
-        sortBy: null, filterBy: null
-    });
-    
+    private tableConfigSource = new BehaviorSubject<TableConfig>(
+        {
+            sortBy: null,
+            filterBy: null,
+        }
+    );
+
     ngOnInit(): void {
-        this.tableConfig = this.tableConfigSource.asObservable()
+        this.tableConfig = this.tableConfigSource.asObservable();
     }
-    
+
     tableConfigUpdate(config: TableConfig) {
-        this.tableConfigSource.next(config)
+        this.tableConfigSource.next(config);
     }
 }

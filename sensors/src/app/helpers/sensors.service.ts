@@ -47,7 +47,6 @@ export class SensorsService {
         offset?: number,
         tableConfig?: TableConfig
     ): Observable<Paginated<SensorData>> {
-
         const httpOptions = {
             headers: new HttpHeaders({
                 "Content-Type": "application/json",
@@ -56,7 +55,10 @@ export class SensorsService {
         };
 
         if (tableConfig.sortBy) {
-            httpOptions.params = httpOptions.params.set("sortBy", tableConfig.sortBy);
+            httpOptions.params = httpOptions.params.set(
+                "sortBy",
+                tableConfig.sortBy
+            );
         }
         if (tableConfig.filterBy) {
             httpOptions.params = httpOptions.params.set(

@@ -7,6 +7,11 @@ import { StepperComponent } from "./stepper/stepper.component";
 
 @NgModule({
     declarations: [StepperComponent],
-    imports: [CommonModule, CreateRoutingModule, SharedModule, ReactiveFormsModule],
+    imports: [
+        CommonModule,
+        CreateRoutingModule,
+        SharedModule,
+        ReactiveFormsModule,
+    ],
 })
 export class CreateModule {}

@@ -1,14 +1,24 @@
 <mat-drawer-container autosize hasBackdrop="true">
     <mat-drawer #drawer class="drawer" mode="over">
-        <app-table-config (tableConfigUpdate)="tableConfigUpdate($event)"></app-table-config>
+        <app-table-config
+            (tableConfigUpdate)="tableConfigUpdate($event)"
+        ></app-table-config>
     </mat-drawer>
 
     <div class="content-container">
         <mat-toolbar color="primary">
-            <button class="header-button" mat-icon-button routerLink="/create">
+            <button
+                class="header-button"
+                mat-icon-button
+                routerLink="/create"
+            >
                 <mat-icon>add</mat-icon>
             </button>
-            <button class="header-button" mat-icon-button routerLink="/plot">
+            <button
+                class="header-button"
+                mat-icon-button
+                routerLink="/plot"
+            >
                 <mat-icon>insights</mat-icon>
             </button>
         </mat-toolbar>

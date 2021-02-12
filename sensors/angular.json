@@ -18,7 +18,7 @@
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
                         "allowedCommonJsDependencies": [
-                            "lodash"
+                            "lodash", "apexcharts"
                         ],
                         "outputPath": "dist/sensors",
                         "index": "src/index.html",

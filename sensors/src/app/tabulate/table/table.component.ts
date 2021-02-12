@@ -1,4 +1,8 @@
-import { BehaviorSubject, Observable, combineLatest } from "rxjs";
+import {
+    BehaviorSubject,
+    Observable,
+    combineLatest,
+} from "rxjs";
 import { Component, Input, OnInit } from "@angular/core";
 import {
     Paginated,
@@ -37,23 +41,28 @@ export class TableComponent implements OnInit {
         defaultPaginatorConfig
     );
 
-    @Input() tableConfig: Observable<TableConfig>
+    @Input() tableConfig: Observable<TableConfig>;
 
     constructor(private sensorsService: SensorsService) {}
 
     ngOnInit(): void {
-        this.sensorData = combineLatest([this.paginatorConfig, this.tableConfig])
-        .pipe(
+        this.sensorData = combineLatest([
+            this.paginatorConfig,
+            this.tableConfig,
+        ]).pipe(
             debounceTime(50),
-            switchMap(
-                ([paginatorConfig, tableConfig]) => {
+            switchMap(([paginatorConfig, tableConfig]) => {
                 const limit = paginatorConfig
                     ? paginatorConfig.pageSize
                     : null;
                 const offset = paginatorConfig
                     ? limit * paginatorConfig.pageIndex
                     : null;
-                return this.sensorsService.list(limit, offset, tableConfig);
+                return this.sensorsService.list(
+                    limit,
+                    offset,
+                    tableConfig
+                );
             })
         );
     }

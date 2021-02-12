@@ -6,9 +6,7 @@
     <mat-vertical-stepper #stepper>
         <form id="sensor-data" [formGroup]="sensorData">
             <mat-step stepControl="box_id">
-                <ng-template matStepLabel
-                    >Box ID</ng-template
-                >
+                <ng-template matStepLabel>Box ID</ng-template>
                 <mat-form-field class="form-field">
                     <mat-label>Box ID</mat-label>
                     <input
@@ -26,12 +24,23 @@
                 <mat-form-field class="form-field">
                     <mat-label>Sensor data type</mat-label>
                     <mat-select formControlName="sensorDataType">
-                        <mat-option *ngFor="let sensorDataType of sensorDataTypes" [value]="sensorDataType">{{sensorDataType.name}}</mat-option>
+                        <mat-option
+                            *ngFor="
+                                let sensorDataType of sensorDataTypes
+                            "
+                            [value]="sensorDataType"
+                            >{{
+                                sensorDataType.name
+                            }}</mat-option
+                        >
                     </mat-select>
                 </mat-form-field>
             </mat-step>
 
-            <mat-step stepControl="coordinates" formGroupName="coordinates">
+            <mat-step
+                stepControl="coordinates"
+                formGroupName="coordinates"
+            >
                 <ng-template matStepLabel
                     >Coordinates</ng-template
                 >
@@ -54,9 +63,7 @@
             </mat-step>
 
             <mat-step stepControl="reading">
-                <ng-template matStepLabel
-                    >Reading</ng-template
-                >
+                <ng-template matStepLabel>Reading</ng-template>
                 <mat-form-field class="form-field">
                     <mat-label>Reading</mat-label>
                     <input
@@ -66,7 +73,6 @@
                     />
                 </mat-form-field>
             </mat-step>
-
         </form>
     </mat-vertical-stepper>
     <button
