@@ -9,7 +9,7 @@ Tabular display for sensor readings
 | Project | ![license][license] ![release][release]                        |
 | Raised  | [![issues][issues]][issues_link] [![pulls][pulls]][pulls_link] |
 
-## Demonstration
+## Live demo
 
 Check out our [live demo!][demo]
 
@@ -104,7 +104,7 @@ ng test
 
 ## Documentation
 
-Additional details are available in the[documentation][documentation]
+Additional details are available in the [documentation][documentation]
 
 ## Changelog
 
