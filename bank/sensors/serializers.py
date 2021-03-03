@@ -1,4 +1,4 @@
-from rest_framework.serializers import CharField, ModelSerializer, JSONField
+from rest_framework.serializers import ModelSerializer
 
 from .models import SensorData
 

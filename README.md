@@ -1,6 +1,6 @@
 # Sensors
 
-Tabular display for sensor readings
+Tabular display for sensor readings.
 
 ## Status
 

@@ -1,25 +1,25 @@
 <div class="chart-container" fxLayout="column">
-    <div class="metric-options-field">
-            <mat-form-field appearance="outline">
-                <mat-label>Metrics</mat-label>
-                <mat-select [formControl]="metric">
-                    <mat-option
-                        *ngFor="let option of metricOptions"
-                        [value]="option.value"
-                        >{{ option.name }}</mat-option
-                    >
-                </mat-select>
-            </mat-form-field>
-    </div>
+  <div class="metric-options-field">
+    <mat-form-field appearance="outline">
+      <mat-label>Metrics</mat-label>
+      <mat-select [formControl]="metric">
+        <mat-option
+          *ngFor="let option of metricOptions"
+          [value]="option.value"
+          >{{ option.name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </div>
 
-    <apx-chart
-        *ngIf="chartOptions | async as chartOptions"
-        [series]="chartOptions.series"
-        [chart]="chartOptions.chart"
-        [xaxis]="chartOptions.xaxis"
-        [dataLabels]="chartOptions.dataLabels"
-        [grid]="chartOptions.grid"
-        [stroke]="chartOptions.stroke"
-        [title]="chartOptions.title"
-    ></apx-chart>
+  <apx-chart
+    *ngIf="chartOptions | async as chartOptions"
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis"
+    [dataLabels]="chartOptions.dataLabels"
+    [grid]="chartOptions.grid"
+    [stroke]="chartOptions.stroke"
+    [title]="chartOptions.title"
+  ></apx-chart>
 </div>

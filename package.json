@@ -1,6 +1,6 @@
 {
   "name": "sensors",
-  "description": "Tabular display for sensor readings",
+  "description": "Tabular display for sensor readings.",
   "version": "0.1.0",
   "license": "MIT",
   "author": "Joel Lefkowitz",

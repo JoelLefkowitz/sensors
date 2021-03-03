@@ -4,6 +4,6 @@
 
 ### Added
 
--   Front end table components
--   Front end plot components
--   Back end rest endpoints
+- Front end table components
+- Front end plot components
+- Back end rest endpoints

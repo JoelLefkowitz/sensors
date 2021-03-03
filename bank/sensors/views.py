@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
 from .models import SensorData
 from .serializers import SensorDataSerializer
-from rest_framework.viewsets import ModelViewSet
 
 
 class SensorDataViewSet(ModelViewSet):
@@ -22,18 +21,25 @@ class SensorDataViewSet(ModelViewSet):
         return Response(serializer.data)
 
     def filter_queryset(self, queryset):
-        sensor_type = self.request.query_params.get("sensor_type", None)
-        
+        sensor_type = self.request.query_params.get(
+            "sensor_type", None
+        )
+
         if sensor_type:
             queryset = queryset.filter(sensor_type=sensor_type)
-            
+
         return queryset
-    
+
     def sort_queryset(self, queryset):
-        if self.request.query_params.get("sortBy", None) == "reading_ts":
+        if (
+            self.request.query_params.get("sortBy", None)
+            == "reading_ts"
+        ):
             return sorted(queryset, key=lambda x: x.reading_ts)
 
-        elif self.request.query_params.get("sortBy", None) == "reading":
+        elif (
+            self.request.query_params.get("sortBy", None) == "reading"
+        ):
             return sorted(queryset, key=lambda x: x.reading)
 
         else:

@@ -1,4 +1,4 @@
-from django.db.models import Model, CharField, FloatField
+from django.db.models import CharField, FloatField, Model
 
 
 class SensorData(Model):
