@@ -10,7 +10,7 @@ services:
   sensors:
     image: joellefkowitz/sensors:0.1.0
     ports:
-      - 4200:80
+      - 80:80
     depends_on:
       - bank
 

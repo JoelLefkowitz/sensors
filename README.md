@@ -4,94 +4,21 @@ Tabular display for sensor readings
 
 ## Status
 
-| Source  | Shields                                                        |
-| ------- | -------------------------------------------------------------- |
-| Project | ![license][license] ![release][release]                        |
-| Raised  | [![issues][issues]][issues_link] [![pulls][pulls]][pulls_link] |
-
-## Live demo
-
-Check out our [live demo!][demo]
+| Source     | Shields                                                                                                            |
+| ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| Project    | ![release][release_shield] ![license][license_shield] ![dependents][dependents_shield]                             |
+| Health     | ![travis][travis_shield] ![codacy][codacy_shield] ![coverage][coverage_shield] ![readthedocs][readthedocs_shield]  |
+| Repository | ![issues][issues_shield] ![pulls][pulls_shield]                                                                    |
+| Activity   | ![contributors][contributors_shield] ![monthly_commits][monthly_commits_shield] ![last_commit][last_commit_shield] |
 
 ## Architecture
 
 ![Architecture][architecture]
 
-## Decisions
-
-Rather than storing data on the front end we implement a rest API, this is beacause:
-
-* Storing the dataset on the front end prevents the persistance of changes made between sessions.
-
-* A document (NoSQL) database is not easy to append new data to.
-
-* A rest API can support pagination, filtering and sorting to satisfy the requirements.
-
-It is necessary to parse the initial JSON data into a fixture that the backend can load:
+## Installation
 
 ```bash
-cd bank/fixtures
-python parse.py --input initial.json --output parsed.json
-```
-
-This can then be loadded:
-
-```bash
-cd bank
-python manage.py loaddata fixtures/parsed.json
-```
-
-## Running
-
-### Development
-
-Install dependencies:
-
-```bash
-cd sensors
-npm i
-```
-
-Run locally at port 4200:
-
-```bash
-npm run dev
-```
-
-Install server dependencies
-
-```bash
-cd bank
-pip install .
-```
-
-Run a server isntance:
-
-```bash
-export DJANGO_SETTINGS_MODULE="bank.settings.dev"
-python manage.py migrate
-python manage.py loaddata fixtures/parsed.json
-python manage.py runserver
-```
-
-### Production
-
-Build the images:
-
-```bash
-cd sensors
-docker build . -t joellefkowitz/sensors:0.1.0
-```
-
-```bash
-cd bank
-docker build . -t joellefkowitz/bank:0.1.0
-```
-
-Deploy to a swarm:
-
-```bash
-docker stack deploy prod -c compose/docker-compose.yml
+git clone https://github.com/JoelLefkowitz/sensors
 ```
 
 ## Tests
@@ -99,20 +26,57 @@ docker stack deploy prod -c compose/docker-compose.yml
 To run unit tests:
 
 ```bash
-ng test
+grunt tests:unit
+```
+
+To generate a coverage report:
+
+```bash
+grunt tests:coverage
 ```
 
 ## Documentation
 
-Additional details are available in the [documentation][documentation]
+This repository's documentation is hosted on [readthedocs][readthedocs].
 
-## Changelog
+To generate the sphinx configuration:
 
-Please read [CHANGELOG.md](CHANGELOG.md) for details on changes that have been made.
+```bash
+grunt docs:generate
+```
+
+Then build the documentation:
+
+```bash
+grunt docs:build
+```
+
+## Tooling
+
+To run linters:
+
+```bash
+grunt lint
+```
+
+To run formatters:
+
+```bash
+grunt format
+```
+
+Before commiting new code:
+
+```bash
+grunt precommit
+```
+
+This will run linters, formaters, generate a test coverage report and the sphinx configuration.
 
 ## Versioning
 
-[SemVer][semver] is used for versioning. For a list of versions available, see the tags on this repository.
+This repository adheres to semantic versioning standards.
+For more inforamtion on semantic versioning visit [SemVer][semver].
 
 Bump2version is used to version and tag changes.
 For example:
@@ -121,39 +85,64 @@ For example:
 bump2version patch
 ```
 
-Releases are made on every minor change.
+## Changelog
 
-## Author
-
--   **Joel Lefkowitz** - _Initial work_ - [Joel Lefkowitz][author]
-
-See also the list of contributors who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Please read this repository's [CHANGELOG](CHANGELOG.md) for details on changes that have been made.
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
+Please read this repository's guidelines on [CONTRIBUTING](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-## Acknowledgments
+## Contributors
 
-None yet!
+- **Joel Lefkowitz** - _Initial work_ - [Joel Lefkowitz][joellefkowitz]
 
-<!-- Status table links -->
+[![Buy Me A Coffee][coffee_button]][coffee]
 
-[license]: https://img.shields.io/github/license/joellefkowitz/sensors
-[release]: https://img.shields.io/github/v/tag/joellefkowitz/sensors
-[issues]: https://img.shields.io/github/issues/joellefkowitz/sensors "Issues"
-[issues_link]: https://github.com/JoelLefkowitz/sensors/issues
-[pulls]: https://img.shields.io/github/issues-pr/joellefkowitz/sensors "Pull requests"
-[pulls_link]: https://github.com/JoelLefkowitz/sensors/pulls
+## Remarks
 
-<!-- Plugable links -->
+Lots of love to the open source community!
 
-[documentation]: https://sensors.readthedocs.io/en/latest/
-[author]: https://github.com/JoelLefkowitz
+![Be kind][be_kind]
+
+<!-- Github links -->
+
+[pulls]: https://github.com/JoelLefkowitz/sensors/pulls
+[issues]: https://github.com/JoelLefkowitz/sensors/issues
+[architecture]: https://github.com/JoelLefkowitz/sensors/raw/master/architecture.png
+
+<!-- External links -->
+
+[readthedocs]: https://joellefkowitz-sensors.readthedocs.io/en/latest/
 [semver]: http://semver.org/
-[demo]: http://sensors.joellefkowitz.co.uk/home
-[architecture]: https://github.com/JoelLefkowitz/sensors/raw/master/architecture.png "Architecture"
+[coffee]: https://www.buymeacoffee.com/joellefkowitz
+[coffee_button]: https://cdn.buymeacoffee.com/buttons/default-blue.png
+[be_kind]: https://media.giphy.com/media/osAcIGTSyeovPq6Xph/giphy.gif
+
+<!-- Acknowledgments -->
+
+[joellefkowitz]: https://github.com/JoelLefkowitz
+
+<!-- Project shields -->
+
+[release_shield]: https://img.shields.io/github/v/tag/joellefkowitz/sensors
+[license_shield]: https://img.shields.io/github/license/joellefkowitz/sensors
+[dependents_shield]: https://img.shields.io/librariesio/dependent-repos/pypi/sensors
+
+<!-- Health shields -->
+
+[travis_shield]: https://img.shields.io/travis/joellefkowitz/sensors
+[codacy_shield]: https://img.shields.io/codacy/coverage/sensors
+[coverage_shield]: https://img.shields.io/codacy/grade/sensors
+[readthedocs_shield]: https://img.shields.io/readthedocs/joellefkowitz-sensors
+
+<!-- Repository shields -->
+
+[issues_shield]: https://img.shields.io/github/issues/joellefkowitz/sensors
+[pulls_shield]: https://img.shields.io/github/issues-pr/joellefkowitz/sensors
+
+<!-- Activity shields -->
+
+[contributors_shield]: https://img.shields.io/github/contributors/joellefkowitz/sensors
+[monthly_commits_shield]: https://img.shields.io/github/commit-activity/m/joellefkowitz/sensors
+[last_commit_shield]: https://img.shields.io/github/last-commit/joellefkowitz/sensors

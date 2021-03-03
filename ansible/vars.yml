@@ -1,0 +1,6 @@
+pull_images:
+  - joellefkowitz/bank:0.1.0
+  - joellefkowitz/sensors:0.1.0
+env_files:
+  - bank.env
+  - postgres.env

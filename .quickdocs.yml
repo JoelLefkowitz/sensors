@@ -1,0 +1,6 @@
+project: sensors
+version: 0.1.0
+author: Joel Lefkowitz
+verbose_name: Sensors
+html_title: Sensors
+github_url: JoelLefkowitz/sensors

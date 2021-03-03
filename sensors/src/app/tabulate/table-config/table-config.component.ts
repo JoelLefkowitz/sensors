@@ -1,6 +1,7 @@
 import {
     Component,
     EventEmitter,
+    OnDestroy,
     OnInit,
     Output,
 } from "@angular/core";
@@ -22,7 +23,7 @@ export interface TableConfig {
     templateUrl: "./table-config.component.html",
     styleUrls: ["./table-config.component.scss"],
 })
-export class TableConfigComponent implements OnInit {
+export class TableConfigComponent implements OnInit, OnDestroy {
     tableConfig = new FormGroup({
         sortBy: new FormControl(""),
         filterBy: new FormControl(""),

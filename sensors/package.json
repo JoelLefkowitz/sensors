@@ -1,10 +1,6 @@
 {
     "name": "sensors",
-    "version": "0.0.0",
-    "scripts": {
-        "dev": "ng serve --proxy-config dev.proxy.conf.json"
-    },
-    "private": true,
+    "version": "0.1.0",
     "dependencies": {
         "@angular/animations": "~10.0.11",
         "@angular/cdk": "^11.2.0",
